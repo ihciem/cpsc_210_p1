@@ -20,7 +20,7 @@ public class RouteManager implements Iterable<Route> {
      * Constructs Route manager with empty collection of routes
      */
     private RouteManager() {
-
+        routeMap = new LinkedHashMap<>();
     }
 
     /**

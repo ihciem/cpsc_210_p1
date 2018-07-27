@@ -3,9 +3,7 @@ package ca.ubc.cs.cpsc210.translink.model;
 import ca.ubc.cs.cpsc210.translink.model.exception.RouteException;
 import ca.ubc.cs.cpsc210.translink.util.LatLon;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 // TODO: Task 2: Complete all the methods of this class
 
@@ -15,6 +13,11 @@ import java.util.Set;
  * through this stop and a list of arrivals.
  */
 public class Stop implements Iterable<Arrival> {
+    private int number;
+    private String name;
+    private LatLon locn;
+    private Set<Route> routes;
+    private List<Bus> buses;
     private List<Arrival> arrivals;
 
     /**
@@ -26,6 +29,12 @@ public class Stop implements Iterable<Arrival> {
      * @param locn      location of this stop
      */
     public Stop(int number, String name, LatLon locn) {
+        this.number = number;
+        this.name = name;
+        this.locn = locn;
+        routes = new HashSet<>();
+        buses = new ArrayList<>();
+        arrivals = new ArrayList<>();
     }
 
     /**
@@ -33,7 +42,7 @@ public class Stop implements Iterable<Arrival> {
      * @return      the name
      */
     public String getName() {
-        return null;
+        return name;
     }
 
     /**
@@ -41,7 +50,7 @@ public class Stop implements Iterable<Arrival> {
      * @return      the location
      */
     public LatLon getLocn() {
-        return null;
+        return locn;
     }
 
     /**
@@ -49,7 +58,7 @@ public class Stop implements Iterable<Arrival> {
      * @return      the number
      */
     public int getNumber() {
-        return 0;
+        return number;
     }
 
     /**
@@ -57,7 +66,7 @@ public class Stop implements Iterable<Arrival> {
      * @return      an unmodifiable set of routes using this stop
      */
     public Set<Route> getRoutes() {
-        return null;
+        return routes;
     }
 
     /**
@@ -66,7 +75,10 @@ public class Stop implements Iterable<Arrival> {
      * @param route  the route to add
      */
     public void addRoute(Route route) {
-
+        if (!routes.contains(route)) {
+            routes.add(route);
+            route.addStop(this);
+        }
     }
 
     /**
@@ -75,7 +87,10 @@ public class Stop implements Iterable<Arrival> {
      * @param route the route to remove
      */
     public void removeRoute(Route route) {
-
+        if (routes.contains(route)) {
+            routes.remove(route);
+            route.removeStop(this);
+        }
     }
 
     /**
@@ -84,7 +99,7 @@ public class Stop implements Iterable<Arrival> {
      * @return  true if this stop is on given route
      */
     public boolean onRoute(Route route) {
-        return false;
+        return routes.contains(route);
     }
 
     /**
@@ -94,14 +109,20 @@ public class Stop implements Iterable<Arrival> {
      * @param arrival  the bus arrival to add to stop
      */
     public void addArrival(Arrival arrival) {
-
+        boolean added = false;
+        for (Arrival a : arrivals) {
+            if (!added && a.compareTo(arrival) >= 0) {
+                arrivals.add(arrivals.indexOf(a), arrival);
+                added = true;
+            }
+        }
     }
 
     /**
      * Remove all arrivals from this stop
      */
     public void clearArrivals() {
-
+        arrivals.clear();
     }
 
     /**
@@ -110,7 +131,11 @@ public class Stop implements Iterable<Arrival> {
      * @throws RouteException if bus is not on a route on which this stop lies
      */
     public void addBus(Bus bus) throws RouteException {
-
+        if (bus.getRoute().hasStop(this)) {
+            buses.add(bus);
+        } else {
+            throw new RouteException("Bus is not on a route with this stop.");
+        }
     }
 
     /**
@@ -118,14 +143,14 @@ public class Stop implements Iterable<Arrival> {
      * @return  unmodifiable list of buses
      */
     public List<Bus> getBuses() {
-        return null;
+        return buses;
     }
 
     /**
      * Clear all buses from this stop
      */
     public void clearBuses() {
-
+        buses.clear();
     }
 
     /**
@@ -133,7 +158,10 @@ public class Stop implements Iterable<Arrival> {
      */
     @Override
     public boolean equals(Object o) {
-        return false;
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Stop stop = (Stop) o;
+        return number == (stop.getNumber());
     }
 
     /**
@@ -142,7 +170,7 @@ public class Stop implements Iterable<Arrival> {
      */
     @Override
     public int hashCode() {
-        return 1;
+        return Objects.hash(number);
     }
 
     @Override
@@ -157,7 +185,7 @@ public class Stop implements Iterable<Arrival> {
      * @param name      the new name
      */
     public void setName(String name) {
-
+        this.name = name;
     }
 
     /**
@@ -165,6 +193,6 @@ public class Stop implements Iterable<Arrival> {
      * @param locn      the new location
      */
     public void setLocn(LatLon locn) {
-
+        this.locn = locn;
     }
 }

@@ -24,8 +24,31 @@ class ArrivalsTest {
     @Test
     void testConstructor() {
         assertEquals(23, arrival.getTimeToStopInMins());
+        assertEquals("Home", arrival.getDestination());
         assertEquals(route, arrival.getRoute());
     }
 
-    // TODO: design more tests
+    @Test
+    void testGetStatusOnSchedule() {
+        arrival.setStatus(" ");
+        assertEquals(" ", arrival.getStatus());
+    }
+
+    @Test
+    void testGetStatusScheduledTime() {
+        arrival.setStatus("*");
+        assertEquals("*", arrival.getStatus());
+    }
+
+    @Test
+    void testGetStatusEarly() {
+        arrival.setStatus("+");
+        assertEquals("+", arrival.getStatus());
+    }
+
+    @Test
+    void testGetStatusLate() {
+        arrival.setStatus("-");
+        assertEquals("-", arrival.getStatus());
+    }
 }

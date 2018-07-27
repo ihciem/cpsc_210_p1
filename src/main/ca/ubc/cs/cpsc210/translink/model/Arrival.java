@@ -1,6 +1,5 @@
 package ca.ubc.cs.cpsc210.translink.model;
 
-// TODO: Task 2: Complete all the methods in this class
 
 /**
  * Represents an estimated arrival with time to arrival in minutes,
@@ -8,6 +7,10 @@ package ca.ubc.cs.cpsc210.translink.model;
  * (one of " " (on time), "*" (scheduled time), "-" (late), or "+" (early)).
  */
 public class Arrival implements Comparable<Arrival> {
+    private int timeToStop;
+    private String destination;
+    private Route route;
+    private String status;
 
     /**
      * Constructs a new arrival with the given time to stop (in minutes),
@@ -18,7 +21,9 @@ public class Arrival implements Comparable<Arrival> {
      * The status of a newly created arrival should be set to " "
      */
     public Arrival(int timeToStop, String destination, Route route) {
-
+        this.timeToStop = timeToStop;
+        this.destination = destination;
+        this.route = route;
     }
 
     /**
@@ -27,15 +32,15 @@ public class Arrival implements Comparable<Arrival> {
      * @return  time until bus arrives at stop in minutes
      */
     public int getTimeToStopInMins() {
-        return 0;
+        return timeToStop;
     }
 
     public String getDestination() {
-        return null;
+        return destination;
     }
 
     public Route getRoute() {
-        return null;
+        return route;
     }
 
     /**
@@ -53,7 +58,7 @@ public class Arrival implements Comparable<Arrival> {
      * @return      the status
      */
     public String getStatus() {
-        return null;
+        return status;
     }
 
     /**
@@ -61,6 +66,6 @@ public class Arrival implements Comparable<Arrival> {
      * @param status  the status
      */
     public void setStatus(String status) {
-
+        this.status = status;
     }
 }
