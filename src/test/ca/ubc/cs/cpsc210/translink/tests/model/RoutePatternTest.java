@@ -76,7 +76,7 @@ public class RoutePatternTest {
         path.add(ll1);
         path.add(ll2);
         path.add(ll3);
-        assertEquals(null, routePattern.getPath());
+        assertTrue(routePattern.getPath().isEmpty());
         routePattern.setPath(path);
         assertEquals(path, routePattern.getPath());
     }

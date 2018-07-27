@@ -89,7 +89,7 @@ public class Route implements Iterable<Stop> {
      * @return      An unmodifiable list of all the stops
      */
     public List<Stop> getStops() {
-        return stops;
+        return Collections.unmodifiableList(stops);
     }
 
     /**
@@ -192,6 +192,6 @@ public class Route implements Iterable<Stop> {
      * @return      an unmodifiable list of the patterns for this route
      */
     public List<RoutePattern> getPatterns() {
-        return routePatterns;
+        return Collections.unmodifiableList(routePatterns);
     }
 }

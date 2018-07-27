@@ -65,7 +65,7 @@ public class Stop implements Iterable<Arrival> {
      * @return      an unmodifiable set of routes using this stop
      */
     public Set<Route> getRoutes() {
-        return routes;
+        return Collections.unmodifiableSet(routes);
     }
 
     /**
@@ -146,7 +146,7 @@ public class Stop implements Iterable<Arrival> {
      * @return  unmodifiable list of buses
      */
     public List<Bus> getBuses() {
-        return buses;
+        return Collections.unmodifiableList(buses);
     }
 
     /**

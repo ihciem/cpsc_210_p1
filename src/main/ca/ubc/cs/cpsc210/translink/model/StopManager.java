@@ -40,7 +40,6 @@ public class StopManager implements Iterable<Stop> {
         if (instance == null) {
             instance = new StopManager();
         }
-
         return instance;
     }
 
@@ -60,13 +59,12 @@ public class StopManager implements Iterable<Stop> {
      * @return  stop with given number
      */
     public Stop getStopWithNumber(int number) {
-        if (stopMap.containsKey(number)) {
-            return stopMap.get(number);
+        if (!stopMap.containsKey(number)) {
+            LatLon locn = new LatLon(49.282729, -123.120738);
+            Stop stop = new Stop(number, "", locn);
+            stopMap.put(number, stop);
         }
-        LatLon locn = new LatLon(49.282729, -123.120738);
-        Stop stop = new Stop(number, "", locn);
-        stopMap.put(number, stop);
-        return stop;
+        return stopMap.get(number);
     }
 
     /**
@@ -80,12 +78,12 @@ public class StopManager implements Iterable<Stop> {
      * @return  stop with given number
      */
     public Stop getStopWithNumber(int number, String name, LatLon locn) {
-        if (stopMap.containsKey(number)) {
+        if (!stopMap.containsKey(number)) {
+            Stop stop = new Stop(number, name, locn);
+            stopMap.put(number, stop);
             return stopMap.get(number);
         }
-        Stop stop = new Stop(number, name, locn);
-        stopMap.put(number, stop);
-        return stop;
+        return stopMap.get(number);
     }
 
     /**
@@ -141,7 +139,7 @@ public class StopManager implements Iterable<Stop> {
                 closest = stop;
             }
         }
-        return closest;  // stub
+        return closest;
     }
 
     @Override
