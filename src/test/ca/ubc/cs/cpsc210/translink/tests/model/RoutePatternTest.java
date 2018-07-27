@@ -61,8 +61,9 @@ public class RoutePatternTest {
 
     @Test
     void testHashCode() {
+        Route r = new Route("49");
         RoutePattern other = new RoutePattern("Express", "Joyce"
-                , "East", route);
+                , "East", r);
         assertEquals(routePattern.hashCode(), other.hashCode());
     }
 

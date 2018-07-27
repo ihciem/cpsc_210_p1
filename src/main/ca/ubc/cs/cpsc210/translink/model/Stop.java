@@ -5,7 +5,6 @@ import ca.ubc.cs.cpsc210.translink.util.LatLon;
 
 import java.util.*;
 
-// TODO: Task 2: Complete all the methods of this class
 
 /**
  * Represents a bus stop with an number, name, location (lat/lon)
@@ -99,7 +98,7 @@ public class Stop implements Iterable<Arrival> {
      * @return  true if this stop is on given route
      */
     public boolean onRoute(Route route) {
-        return routes.contains(route);
+        return route.hasStop(this);
     }
 
     /**
@@ -110,10 +109,14 @@ public class Stop implements Iterable<Arrival> {
      */
     public void addArrival(Arrival arrival) {
         boolean added = false;
-        for (Arrival a : arrivals) {
-            if (!added && a.compareTo(arrival) >= 0) {
-                arrivals.add(arrivals.indexOf(a), arrival);
-                added = true;
+        if (arrivals.isEmpty()) {
+            arrivals.add(arrival);
+        } else {
+            for (Arrival a : arrivals) {
+                if (!added && a.compareTo(arrival) >= 0) {
+                    arrivals.add(arrivals.indexOf(a), arrival);
+                    added = true;
+                }
             }
         }
     }
@@ -158,8 +161,12 @@ public class Stop implements Iterable<Arrival> {
      */
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Stop stop = (Stop) o;
         return number == (stop.getNumber());
     }

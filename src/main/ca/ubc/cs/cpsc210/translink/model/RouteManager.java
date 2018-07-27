@@ -2,8 +2,6 @@ package ca.ubc.cs.cpsc210.translink.model;
 
 import java.util.*;
 
-// TODO: Task 2: Complete all the methods of this class
-
 /**
  * Manages all routes.
  *
@@ -20,7 +18,7 @@ public class RouteManager implements Iterable<Route> {
      * Constructs Route manager with empty collection of routes
      */
     private RouteManager() {
-        routeMap = new LinkedHashMap<>();
+        routeMap = new HashMap<>();
     }
 
     /**
@@ -45,8 +43,11 @@ public class RouteManager implements Iterable<Route> {
      * @return  route with given number
      */
     public Route getRouteWithNumber(String number) {
-
-        return null;  // stub
+        if (!routeMap.containsKey(number)) {
+            Route route = new Route(number);
+            routeMap.put(number, route);
+        }
+        return routeMap.get(number);
     }
 
     /**
@@ -58,7 +59,12 @@ public class RouteManager implements Iterable<Route> {
      * @return  route with given number and name
      */
     public Route getRouteWithNumber(String number, String name) {
-        return null;
+        if (!routeMap.containsKey(number)) {
+            Route route = new Route(number);
+            route.setName(name);
+            routeMap.put(number, route);
+        }
+        return routeMap.get(number);
     }
 
     /**
@@ -67,7 +73,7 @@ public class RouteManager implements Iterable<Route> {
      * @return  number of routes added to manager
      */
     public int getNumRoutes() {
-        return 0;  // stub
+        return routeMap.size();
     }
 
     @Override
@@ -80,6 +86,6 @@ public class RouteManager implements Iterable<Route> {
      * Remove all routes from the route manager
      */
     public void clearRoutes() {
-
+        routeMap.clear();
     }
 }

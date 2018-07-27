@@ -38,7 +38,7 @@ class RouteManagerTest {
         Route r2 = RouteManager.getInstance().getRouteWithNumber("43");
         assertEquals(1, RouteManager.getInstance().getNumRoutes());
         assertEquals(r, r2);
-        assertFalse(r43.equals(r2));
+        assertEquals(r43, r2);
     }
 
     @Test
