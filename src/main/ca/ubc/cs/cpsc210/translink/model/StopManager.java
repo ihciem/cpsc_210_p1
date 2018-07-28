@@ -83,6 +83,8 @@ public class StopManager implements Iterable<Stop> {
             stopMap.put(number, stop);
             return stopMap.get(number);
         }
+        stopMap.get(number).setName(name);
+        stopMap.get(number).setLocn(locn);
         return stopMap.get(number);
     }
 

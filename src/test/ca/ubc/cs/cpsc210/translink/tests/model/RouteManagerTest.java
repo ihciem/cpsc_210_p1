@@ -54,8 +54,8 @@ class RouteManagerTest {
         Route r1 = RouteManager.getInstance().getRouteWithNumber("43");
         Route r2 = RouteManager.getInstance().getRouteWithNumber("43", "Joyce Station / UBC");
         assertEquals(r1, r2);
-        assertEquals(r1.getName(), "");
-        assertEquals(r2.getName(), "");
+        assertEquals(r1.getName(), "Joyce Station / UBC");
+        assertEquals(r2.getName(), "Joyce Station / UBC");
     }
 
     @Test

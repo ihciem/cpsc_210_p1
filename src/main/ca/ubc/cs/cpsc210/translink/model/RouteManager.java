@@ -61,9 +61,9 @@ public class RouteManager implements Iterable<Route> {
     public Route getRouteWithNumber(String number, String name) {
         if (!routeMap.containsKey(number)) {
             Route route = new Route(number);
-            route.setName(name);
             routeMap.put(number, route);
         }
+        routeMap.get(number).setName(name);
         return routeMap.get(number);
     }
 
