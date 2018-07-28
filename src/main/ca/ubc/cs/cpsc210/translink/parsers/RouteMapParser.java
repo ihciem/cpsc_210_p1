@@ -54,15 +54,13 @@ public class RouteMapParser {
      * route number.
      */
     private void parseOnePattern(String str) {
-        String array[] = str.split(";");
+        String[] array = str.split(";");
         String routeNumber = array[0].substring(1, 4);
         String patternName = array[0].substring(5, array[0].length());
         List<LatLon> elements = new ArrayList<>();
         double lat = 0.0;
         double lon;
-        int n = array.length;
-        for (int i = 1; i < n; i++) {
-            String element = array[i];
+        for (String element : Arrays.copyOfRange(array, 1, array.length)) {
             if (lat == 0.0) {
                 lat = Double.parseDouble(element);
             } else {
