@@ -54,20 +54,21 @@ public class RouteMapParser {
      * route number.
      */
     private void parseOnePattern(String str) {
-        String[] array = str.split(";");
-        String routeNumber = array[0].substring(1, 4);
-        String patternName = array[0].substring(5, array[0].length());
+        String[] array = str.split(";", 2);
+        String[] rnpn = array[0].split("-", 2);
+        String routeNumber = rnpn[0];
+        String patternName = rnpn[1];
         List<LatLon> elements = new ArrayList<>();
         double lat = 0.0;
         double lon;
-        for (String element : Arrays.copyOfRange(array, 1, array.length)) {
+        for (String element : array[1].split(";")) {
             if (lat == 0.0) {
                 lat = Double.parseDouble(element);
             } else {
                 lon = Double.parseDouble(element);
                 LatLon latLon = new LatLon(lat, lon);
-                lat = 0.0;
                 elements.add(latLon);
+                lat = 0.0;
             }
         }
         storeRouteMap(routeNumber, patternName, elements);
