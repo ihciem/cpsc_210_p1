@@ -69,9 +69,11 @@ public class StopTest {
     @Test
     void testAddArrival() {
         Route route = new Route("41");
-        Arrival arrival = new Arrival(23, "Home", route);
-        stop.addArrival(arrival);
-        stop.clearArrivals();
+        Arrival a1 = new Arrival(23, "Home", route);
+        Arrival a2 = new Arrival(20, "Home", route);
+        stop.addArrival(a1);
+        stop.addArrival(a2);
+
     }
 
     @Test

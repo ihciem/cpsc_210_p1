@@ -108,18 +108,10 @@ public class Stop implements Iterable<Arrival> {
      * @param arrival  the bus arrival to add to stop
      */
     public void addArrival(Arrival arrival) {
-        boolean added = false;
-        if (arrivals.isEmpty()) {
-            arrivals.add(arrival);
-        } else {
-            for (Arrival a : arrivals) {
-                if (!added && a.compareTo(arrival) >= 0) {
-                    arrivals.add(arrivals.indexOf(a), arrival);
-                    added = true;
-                }
-            }
-        }
+        arrivals.add(arrival);
+        Collections.sort(arrivals);
     }
+
 
     /**
      * Remove all arrivals from this stop
