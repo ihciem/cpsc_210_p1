@@ -8,6 +8,8 @@ import ca.ubc.cs.cpsc210.translink.providers.FileDataProvider;
 import ca.ubc.cs.cpsc210.translink.util.LatLon;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -52,7 +54,25 @@ public class RouteMapParser {
      * route number.
      */
     private void parseOnePattern(String str) {
-        // TODO: Task 3: Implement this method
+        String array[] = str.split(";");
+        String routeNumber = array[0].substring(1, 4);
+        String patternName = array[0].substring(5, array[0].length());
+        List<LatLon> elements = new ArrayList<>();
+        double lat = 0.0;
+        double lon;
+        int n = array.length;
+        for (int i = 1; i < n; i++) {
+            String element = array[i];
+            if (lat == 0.0) {
+                lat = Double.parseDouble(element);
+            } else {
+                lon = Double.parseDouble(element);
+                LatLon latLon = new LatLon(lat, lon);
+                lat = 0.0;
+                elements.add(latLon);
+            }
+        }
+        storeRouteMap(routeNumber, patternName, elements);
     }
 
     /**

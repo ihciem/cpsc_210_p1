@@ -26,7 +26,7 @@ class RouteMapParserTest {
         assertEquals(1232, countNumRoutePatterns());
     }
 
-    // TODO: design more tests
+
 
     /**
      * Helper to count number of route patterns
