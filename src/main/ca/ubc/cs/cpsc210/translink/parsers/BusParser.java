@@ -8,6 +8,11 @@ import org.json.JSONObject;
 
 // Parser for bus data
 public class BusParser {
+    private static String routeNumber;
+    private static String destination;
+    private static double lat;
+    private static double lon;
+    private static String time;
 
     /**
      * Parse buses from JSON response produced by TransLink query.  All parsed buses are
@@ -26,24 +31,41 @@ public class BusParser {
      */
     public static void parseBuses(Stop stop, String jsonResponse) throws JSONException {
         JSONArray buses = new JSONArray(jsonResponse);
-        for (int index = 0; index < buses.length(); index++) {
-            String routeNumber = buses.getJSONObject(index).getString("RouteNo");
-            String destination = buses.getJSONObject(index).getString("Destination");
-            Route route = RouteManager.getInstance().getRouteWithNumber(routeNumber);
-            double lat = buses.getJSONObject(index).getDouble("Latitude");
-            double lon = buses.getJSONObject(index).getDouble("Longitude");
-            String time = buses.getJSONObject(index).getString("RecordedTime");
+        for (int i = 0; i < buses.length(); i++) {
+            JSONObject bus = buses.getJSONObject(i);
+            parseBus(bus);
             if (routeNumber != null && lat != 0.0d & lon != 0.0d && destination != null && time != null) {
-                Bus bus = new Bus(route, lat, lon, destination, time);
+                Route route = RouteManager.getInstance().getRouteWithNumber(routeNumber);
+                Bus b = new Bus(route, lat, lon, destination, time);
                 if (route.hasStop(stop)) {
                     try {
-                        stop.addBus(bus);
+                        stop.addBus(b);
                     } catch (RouteException e) {
                         //nothing
                     }
                 }
+                clearFields();
             }
         }
     }
 
+    private static void parseBus(JSONObject bus) {
+        try {
+            routeNumber = bus.getString("RouteNo").trim();
+            destination = bus.getString("Destination").trim();
+            lat = bus.getDouble("Latitude");
+            lon = bus.getDouble("Longitude");
+            time = bus.getString("RecordedTime").trim();
+        } catch (JSONException e) {
+            //nothing
+        }
+    }
+
+    private static void clearFields() {
+        routeNumber = null;
+        lat = 0.0d;
+        lon = 0.0d;
+        destination = null;
+        time = null;
+    }
 }

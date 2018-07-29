@@ -26,7 +26,21 @@ class RouteMapParserTest {
         assertEquals(1232, countNumRoutePatterns());
     }
 
+    @Test
+    void testRouteParserOneRoute() {
+        RouteMapParser p = new RouteMapParser("routemapsoneroute.txt");
+        p.parse();
+        assertEquals(1, countNumRoutePatterns());
+        assertEquals(4, RouteManager.getInstance().getRouteWithNumber("C43").getPattern("EB2").getPath().size());
+    }
 
+    @Test
+    void testRouteParseNoLatLons() {
+        RouteMapParser p = new RouteMapParser("routemapsnolatlons.txt");
+        p.parse();
+        assertEquals(3, countNumRoutePatterns());
+        assertEquals(0, RouteManager.getInstance().getRouteWithNumber("C43").getPattern("EB2").getPath().size());
+    }
 
     /**
      * Helper to count number of route patterns

@@ -1,0 +1,218 @@
+[
+  {
+    "Name": "MACDONALD/DOWNTOWN ",
+    "OperatingCompany": "CMBC",
+    "RouteNo": "002"
+  },
+  {
+    "OperatingCompany": "CMBC",
+    "Patterns": [
+      {
+        "Destination": "DOWNTOWN",
+        "Direction": "NORTH",
+        "PatternNo": "NB1",
+        "RouteMap": {
+          "Href": "http://nb.translink.ca/geodata/trip/003-NB1.kmz"
+        }
+      },
+      {
+        "Destination": "DOWNTOWN",
+        "Direction": "NORTH",
+        "PatternNo": "NB1STN",
+        "RouteMap": {
+          "Href": "http://nb.translink.ca/geodata/trip/003-NB1STN.kmz"
+        }
+      },
+      {
+        "Destination": "MAIN",
+        "Direction": "SOUTH",
+        "PatternNo": "SB1",
+        "RouteMap": {
+          "Href": "http://nb.translink.ca/geodata/trip/003-SB1.kmz"
+        }
+      },
+      {
+        "Destination": "MAIN-MARINE DR STN",
+        "Direction": "SOUTH",
+        "PatternNo": "SB2",
+        "RouteMap": {
+          "Href": "http://nb.translink.ca/geodata/trip/003-SB2.kmz"
+        }
+      }
+    ],
+    "RouteNo": "003"
+  },
+  {
+    "Name": "POWELL/DOWNTOWN/UBC",
+    "OperatingCompany": "CMBC",
+    "Patterns": [
+      {
+        "Destination": "DOWNTOWN",
+        "Direction": "EAST",
+        "PatternNo": "EBEV4",
+        "RouteMap": {
+          "Href": "http://nb.translink.ca/geodata/trip/004-EBEV4.kmz"
+        }
+      },
+      {
+        "Destination": "DOWNTOWN",
+        "Direction": "EAST",
+        "PatternNo": "EBEV4F",
+        "RouteMap": {
+          "Href": "http://nb.translink.ca/geodata/trip/004-EBEV4F.kmz"
+        }
+      },
+      {
+        "Destination": "DOWNTOWN",
+        "Direction": "EAST",
+        "PatternNo": "EBWKND",
+        "RouteMap": {
+          "Href": "http://nb.translink.ca/geodata/trip/004-EBWKND.kmz"
+        }
+      },
+      {
+        "Destination": "POWELL",
+        "Direction": "EAST",
+        "PatternNo": "EB1",
+        "RouteMap": {
+          "Href": "http://nb.translink.ca/geodata/trip/004-EB1.kmz"
+        }
+      },
+      {
+        "Destination": "POWELL",
+        "Direction": "EAST",
+        "PatternNo": "EB4",
+        "RouteMap": {
+          "Href": "http://nb.translink.ca/geodata/trip/004-EB4.kmz"
+        }
+      },
+      {
+        "Destination": "POWELL",
+        "Direction": "EAST",
+        "PatternNo": "EB6",
+        "RouteMap": {
+          "Href": "http://nb.translink.ca/geodata/trip/004-EB6.kmz"
+        }
+      },
+      {
+        "Destination": "TO BLANCA",
+        "Direction": "WEST",
+        "PatternNo": "WB2",
+        "RouteMap": {
+          "Href": "http://nb.translink.ca/geodata/trip/004-WB2.kmz"
+        }
+      },
+      {
+        "Destination": "TO BLANCA",
+        "Direction": "WEST",
+        "PatternNo": "WB4B",
+        "RouteMap": {
+          "Href": "http://nb.translink.ca/geodata/trip/004-WB4B.kmz"
+        }
+      },
+      {
+        "Destination": "UBC",
+        "Direction": "WEST",
+        "PatternNo": "WB1",
+        "RouteMap": {
+          "Href": "http://nb.translink.ca/geodata/trip/004-WB1.kmz"
+        }
+      },
+      {
+        "Destination": "UBC",
+        "Direction": "WEST",
+        "PatternNo": "WBEV4",
+        "RouteMap": {
+          "Href": "http://nb.translink.ca/geodata/trip/004-WBEV4.kmz"
+        }
+      },
+      {
+        "Destination": "UBC",
+        "Direction": "WEST",
+        "PatternNo": "WBEV4F",
+        "RouteMap": {
+          "Href": "http://nb.translink.ca/geodata/trip/004-WBEV4F.kmz"
+        }
+      },
+      {
+        "Destination": "UBC",
+        "Direction": "WEST",
+        "PatternNo": "WBEV5",
+        "RouteMap": {
+          "Href": "http://nb.translink.ca/geodata/trip/004-WBEV5.kmz"
+        }
+      },
+      {
+        "Destination": "UBC",
+        "Direction": "WEST",
+        "PatternNo": "WBEV5F",
+        "RouteMap": {
+          "Href": "http://nb.translink.ca/geodata/trip/004-WBEV5F.kmz"
+        }
+      },
+      {
+        "Destination": "UBC",
+        "Direction": "WEST",
+        "PatternNo": "WBWKND4",
+        "RouteMap": {
+          "Href": "http://nb.translink.ca/geodata/trip/004-WBWKND4.kmz"
+        }
+      },
+      {
+        "Destination": "UBC",
+        "Direction": "WEST",
+        "PatternNo": "WBWKND5",
+        "RouteMap": {
+          "Href": "http://nb.translink.ca/geodata/trip/004-WBWKND5.kmz"
+        }
+      }
+    ]
+  },
+  {
+    "Name": "ROBSON/DOWNTOWN                ",
+    "OperatingCompany": "CMBC",
+    "Patterns": [
+      {
+        "Destination": "DOWNTOWN",
+        "Direction": "EAST",
+        "PatternNo": "EB1Y",
+        "RouteMap": {
+          "Href": "http://nb.translink.ca/geodata/trip/005-EB1Y.kmz"
+        }
+      },
+      {
+        "Destination": "DOWNTOWN",
+        "Direction": "EAST",
+        "PatternNo": "EB2Y",
+        "RouteMap": {
+          "Href": "http://nb.translink.ca/geodata/trip/005-EB2Y.kmz"
+        }
+      },
+      {
+        "Destination": "DOWNTOWN",
+        "Direction": "EAST",
+        "PatternNo": "EB3Y",
+        "RouteMap": {
+          "Href": "http://nb.translink.ca/geodata/trip/005-EB3Y.kmz"
+        }
+      },
+      {
+        "Destination": "ROBSON",
+        "Direction": "WEST",
+        "PatternNo": "WB1Y",
+        "RouteMap": {
+          "Href": "http://nb.translink.ca/geodata/trip/005-WB1Y.kmz"
+        }
+      },
+      {
+        "Destination": "ROBSON",
+        "Direction": "WEST",
+        "PatternNo": "WB2Y",
+        "RouteMap": {
+          "Href": "http://nb.translink.ca/geodata/trip/005-WB2Y.kmz"
+        }
+      }
+    ],
+    "RouteNo": "005"
+  }
+]

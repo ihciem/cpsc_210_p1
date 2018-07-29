@@ -1,0 +1,94 @@
+[
+  {
+    "VehicleNo": "2101",
+    "TripId": 9082058,
+    "Direction": "EAST",
+    "Destination": "HASTINGS",
+    "Pattern": "EB1",
+    "Latitude": 49.264067,
+    "Longitude": -123.167150,
+    "RecordedTime": "12:52:08 pm",
+    "RouteMap": {
+      "Href": "http:\/\/nb.translink.ca\/geodata\/014.kmz"
+    }
+  },
+  {
+    "VehicleNo": "2131",
+    "TripId": 9077260,
+    "RouteNo": "004",
+    "Direction": "EAST",
+    "Destination": "POWELL",
+    "Pattern": "EB1",
+    "Longitude": -123.228233,
+    "RecordedTime": "12:51:50 pm",
+    "RouteMap": {
+      "Href": "http:\/\/nb.translink.ca\/geodata\/004.kmz"
+    }
+  },
+  {
+    "VehicleNo": "2161",
+    "TripId": 9077286,
+    "RouteNo": "004",
+    "Direction": "EAST",
+    "Destination": "POWELL",
+    "Pattern": "EB1",
+    "Latitude": 49.282167,
+    "RecordedTime": "12:52:22 pm",
+    "RouteMap": {
+      "Href": "http:\/\/nb.translink.ca\/geodata\/004.kmz"
+    }
+  },
+  {
+    "VehicleNo": "2174",
+    "TripId": 9082011,
+    "RouteNo": "014",
+    "Direction": "EAST",
+    "Destination": "HASTINGS",
+    "Pattern": "EB1",
+    "Latitude": 49.284617,
+    "RecordedTime": "12:50:50 pm",
+    "RouteMap": {
+      "Href": "http:\/\/nb.translink.ca\/geodata\/014.kmz"
+    }
+  },
+  {
+    "VehicleNo": "1000",
+    "TripId": 9082013,
+    "RouteNo": "014",
+    "Direction": "EAST",
+    "Pattern": "EB1",
+    "Latitude": 49.284617,
+    "Longitude": -123.114900,
+    "RecordedTime": "12:50:50 pm",
+    "RouteMap": {
+      "Href": "http:\/\/nb.translink.ca\/geodata\/014.kmz"
+    }
+  },
+  {
+    "VehicleNo": "1333",
+    "TripId": 9082014,
+    "RouteNo": "004",
+    "Direction": "EAST",
+    "Destination": "HASTINGS",
+    "Pattern": "EB1",
+    "Latitude": 49.284645,
+    "Longitude": -123.114922,
+    "RouteMap": {
+      "Href": "http:\/\/nb.translink.ca\/geodata\/014.kmz"
+    }
+  },
+  {
+    "VehicleNo": "1888",
+    "TripId": 9082015,
+    "RouteNo": "014",
+    "Direction": "EAST",
+    "Destination": "HASTINGS",
+    "Pattern": "EB3",
+    "Latitude": 49.284698,
+    "Longitude": -123.114911,
+    "RecordedTime": "12:50:50 pm",
+    "RouteMap": {
+      "Href": "http:\/\/nb.translink.ca\/geodata\/014.kmz"
+    }
+  }
+]

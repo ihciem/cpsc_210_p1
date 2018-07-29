@@ -17,6 +17,7 @@ import java.util.List;
  */
 public class RouteMapParser {
     private String fileName;
+    private List<LatLon> elements;
 
     public RouteMapParser(String fileName) {
         this.fileName = fileName;
@@ -56,22 +57,27 @@ public class RouteMapParser {
     private void parseOnePattern(String str) {
         String[] array = str.split(";", 2);
         String[] rnpn = array[0].split("-", 2);
-        String routeNumber = rnpn[0];
+        String routeNumber = rnpn[0].substring(1, rnpn[0].length());
         String patternName = rnpn[1];
-        List<LatLon> elements = new ArrayList<>();
+        elements = new ArrayList<>();
+        if (array[1].contains(";")) {
+            parseLatLon(array[1]);
+        }
+        storeRouteMap(routeNumber, patternName, elements);
+    }
+
+    private void parseLatLon(String array) {
         double lat = 0.0;
-        double lon;
-        for (String element : array[1].split(";")) {
+        for (String element : array.split(";")) {
             if (lat == 0.0) {
                 lat = Double.parseDouble(element);
             } else {
-                lon = Double.parseDouble(element);
+                double lon = Double.parseDouble(element);
                 LatLon latLon = new LatLon(lat, lon);
                 elements.add(latLon);
                 lat = 0.0;
             }
         }
-        storeRouteMap(routeNumber, patternName, elements);
     }
 
     /**
