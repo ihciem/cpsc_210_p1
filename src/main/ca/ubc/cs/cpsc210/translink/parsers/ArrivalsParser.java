@@ -47,6 +47,9 @@ public class ArrivalsParser {
         }
     }
 
+    /**
+     * @param arrival
+     */
     private static void parseArrival(JSONObject arrival) {
         try {
             String routeNo = arrival.getString("RouteNo");
@@ -57,6 +60,10 @@ public class ArrivalsParser {
         }
     }
 
+    /**
+     * @param routeNo
+     * @param schedules
+     */
     private static void parseSchedule(String routeNo, JSONArray schedules) {
         Route r = RouteManager.getInstance().getRouteWithNumber(routeNo);
         for (int i = 0; i < schedules.length(); i++) {

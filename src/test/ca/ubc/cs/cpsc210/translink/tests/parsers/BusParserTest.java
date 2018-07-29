@@ -133,4 +133,29 @@ class BusParserTest {
         assertEquals(2, s.getBuses().size());
     }
 
+    @Test
+    void testBusLocationsParserRouteException() throws JSONException {
+        Stop s = StopManager.getInstance().getStopWithNumber(51479);
+        s.clearBuses();
+
+        // Add routes 004 and 014 to stop, otherwise buses running on these
+        // routes won't be added to stop
+        Route n04 = RouteManager.getInstance().getRouteWithNumber("004");
+        Route n14 = RouteManager.getInstance().getRouteWithNumber("014");
+        s.addRoute(n14);
+
+        String data = "";
+
+        try {
+            data = new FileDataProvider("buslocations.json").dataSourceToString();
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Can't read the bus locations data");
+        }
+
+        BusParser.parseBuses(s, data);
+
+        assertEquals(2, s.getBuses().size());
+    }
+
 }

@@ -135,6 +135,9 @@ public class StopTest {
         Stop s2 = new Stop(50239, "RBC", latLon);
         assertTrue(stop.equals(s1));
         assertFalse(stop.equals(s2));
+        Stop s3 = null;
+        assertFalse(stop.equals(s3));
+        assertFalse(stop.equals(latLon));
     }
 
     @Test

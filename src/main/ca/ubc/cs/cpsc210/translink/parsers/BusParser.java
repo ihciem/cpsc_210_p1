@@ -37,18 +37,19 @@ public class BusParser {
             if (routeNumber != null && lat != 0.0d & lon != 0.0d && destination != null && time != null) {
                 Route route = RouteManager.getInstance().getRouteWithNumber(routeNumber);
                 Bus b = new Bus(route, lat, lon, destination, time);
-                if (route.hasStop(stop)) {
-                    try {
-                        stop.addBus(b);
-                    } catch (RouteException e) {
-                        //nothing
-                    }
+                try {
+                    stop.addBus(b);
+                } catch (RouteException e) {
+                    //nothing
                 }
                 clearFields();
             }
         }
     }
 
+    /**
+     * @param bus
+     */
     private static void parseBus(JSONObject bus) {
         try {
             routeNumber = bus.getString("RouteNo");
@@ -61,6 +62,9 @@ public class BusParser {
         }
     }
 
+    /**
+     * clear fields for next bus
+     */
     private static void clearFields() {
         routeNumber = null;
         lat = 0.0d;

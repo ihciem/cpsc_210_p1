@@ -121,4 +121,9 @@ class StopManagerTest {
         Stop s2 = StopManager.getInstance().getStopWithNumber(9999, "Home", new LatLon(-49.200001, 123.2));
         assertEquals(s2, StopManager.getInstance().findNearestTo(pt));
     }
+
+    @Test
+    void testIterator() {
+        assertFalse(StopManager.getInstance().iterator().hasNext());
+    }
 }

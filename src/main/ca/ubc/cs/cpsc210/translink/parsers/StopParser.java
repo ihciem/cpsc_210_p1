@@ -69,6 +69,10 @@ public class StopParser {
         }
     }
 
+    /**
+     * @param stop
+     * @throws StopDataMissingException
+     */
     private void parseStop(JSONObject stop) throws StopDataMissingException {
         try {
             String name = stop.getString("Name");
@@ -77,19 +81,22 @@ public class StopParser {
             double lon = stop.getDouble("Longitude");
             LatLon latLon = new LatLon(lat, lon);
             String routeNames = stop.getString("Routes");
-            StopManager.getInstance().getStopWithNumber(number, name, latLon);
-            addStopToRoute(number, routeNames);
+            Stop s = StopManager.getInstance().getStopWithNumber(number, name, latLon);
+            addStopToRoute(s, routeNames);
         } catch (JSONException e) {
             throw new StopDataMissingException();
         }
     }
 
-    private void addStopToRoute(int number, String routeNames) {
+    /**
+     * @param stop
+     * @param routeNames
+     */
+    private void addStopToRoute(Stop stop, String routeNames) {
         String[] routes = routeNames.split(",");
         for (String route : routes) {
             route.trim();
-            Route r = RouteManager.getInstance().getRouteWithNumber(route);
-            StopManager.getInstance().getStopWithNumber(number).addRoute(r);
+            RouteManager.getInstance().getRouteWithNumber(route).addStop(stop);
         }
     }
 

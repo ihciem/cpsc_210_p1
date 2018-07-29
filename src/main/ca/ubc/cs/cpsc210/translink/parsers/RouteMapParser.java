@@ -66,6 +66,11 @@ public class RouteMapParser {
         storeRouteMap(routeNumber, patternName, elements);
     }
 
+    /**
+     * Parsing one LatLon pair
+     *
+     * @param array
+     */
     private void parseLatLon(String array) {
         double lat = 0.0;
         for (String element : array.split(";")) {

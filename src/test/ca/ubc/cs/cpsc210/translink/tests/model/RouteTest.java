@@ -131,6 +131,14 @@ public class RouteTest {
     }
 
     @Test
+    void testEqualsNotEquals() {
+        Route anotherRoute = null;
+        assertFalse(testRoute.equals(anotherRoute));
+        RoutePattern routePattern = new RoutePattern("ABC", "UBC", "West", testRoute);
+        assertFalse(testRoute.equals(routePattern));
+    }
+
+    @Test
     void testToString() {
         String rnum = "Route " + 41;
         assertTrue(testRoute.toString().equals(rnum));
@@ -176,5 +184,10 @@ public class RouteTest {
         testRoute.addPattern(routePattern);
         assertTrue(testRoute.getPattern("Express").equals(routePattern));
         assertEquals(1, testRoute.getPatterns().size());
+    }
+
+    @Test
+    void testIterator() {
+        assertFalse(testRoute.iterator().hasNext());
     }
 }

@@ -41,6 +41,12 @@ public class RoutePatternTest {
     }
 
     @Test
+    void testEqualsNullObject() {
+        Route other = null;
+        assertFalse(route.equals(other));
+    }
+
+    @Test
     void testEqualsDifferentClasses() {
         assertFalse(routePattern.equals(route));
     }
