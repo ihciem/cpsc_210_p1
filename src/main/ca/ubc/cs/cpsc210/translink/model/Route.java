@@ -3,7 +3,6 @@ package ca.ubc.cs.cpsc210.translink.model;
 import java.util.*;
 import java.util.List;
 
-// TODO: Task 2: Implement all the methods in this class
 
 /**
  * Represents a bus route with a route number, name, list of stops, and list of RoutePatterns.

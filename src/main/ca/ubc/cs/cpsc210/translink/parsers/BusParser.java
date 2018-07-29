@@ -1,7 +1,10 @@
 package ca.ubc.cs.cpsc210.translink.parsers;
 
-import ca.ubc.cs.cpsc210.translink.model.Stop;
+import ca.ubc.cs.cpsc210.translink.model.*;
+import ca.ubc.cs.cpsc210.translink.model.exception.RouteException;
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 // Parser for bus data
 public class BusParser {
@@ -22,6 +25,25 @@ public class BusParser {
      * </ul>
      */
     public static void parseBuses(Stop stop, String jsonResponse) throws JSONException {
-        // TODO: implement this method
+        JSONArray buses = new JSONArray(jsonResponse);
+        for (int index = 0; index < buses.length(); index++) {
+            String routeNumber = buses.getJSONObject(index).getString("RouteNo");
+            String destination = buses.getJSONObject(index).getString("Destination");
+            Route route = RouteManager.getInstance().getRouteWithNumber(routeNumber);
+            double lat = buses.getJSONObject(index).getDouble("Latitude");
+            double lon = buses.getJSONObject(index).getDouble("Longitude");
+            String time = buses.getJSONObject(index).getString("RecordedTime");
+            if (routeNumber != null && lat != 0.0d & lon != 0.0d && destination != null && time != null) {
+                Bus bus = new Bus(route, lat, lon, destination, time);
+                if (route.hasStop(stop)) {
+                    try {
+                        stop.addBus(bus);
+                    } catch (RouteException e) {
+                        //nothing
+                    }
+                }
+            }
+        }
     }
+
 }

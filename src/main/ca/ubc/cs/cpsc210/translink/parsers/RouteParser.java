@@ -1,17 +1,23 @@
 package ca.ubc.cs.cpsc210.translink.parsers;
 
+import ca.ubc.cs.cpsc210.translink.model.Route;
+import ca.ubc.cs.cpsc210.translink.model.RouteManager;
+import ca.ubc.cs.cpsc210.translink.model.RoutePattern;
 import ca.ubc.cs.cpsc210.translink.parsers.exception.RouteDataMissingException;
 import ca.ubc.cs.cpsc210.translink.providers.DataProvider;
 import ca.ubc.cs.cpsc210.translink.providers.FileDataProvider;
+import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Parse route information in JSON format.
  */
 public class RouteParser {
     private String filename;
+    private List<RoutePattern> routePatterns;
 
     public RouteParser(String filename) {
         this.filename = filename;
@@ -51,6 +57,28 @@ public class RouteParser {
      */
     public void parseRoutes(String jsonResponse)
             throws JSONException, RouteDataMissingException {
-        // TODO: Task 4: Implement this method
+        JSONArray routes = new JSONArray(jsonResponse);
+        for (int index = 0; index < routes.length(); index++) {
+            String routeName = routes.getJSONObject(index).getString("Name");
+            String routeNo = routes.getJSONObject(index).getString("RouteNo");
+            JSONArray patterns = routes.getJSONObject(index).getJSONArray("Patterns");
+            if (routeName == null || routeNo == null || patterns == null) {
+                throw new RouteDataMissingException();
+            } else {
+                parsePatterns(routeNo, routeName, patterns);
+            }
+        }
+    }
+
+    private void parsePatterns(String routeNo, String routeName, JSONArray patterns) throws JSONException {
+        for (int i = 0; i < patterns.length(); i++) {
+            String destination = patterns.getJSONObject(i).getString("Destination");
+            String direction = patterns.getJSONObject(i).getString("Direction");
+            String name = patterns.getJSONObject(i).getString("PatternNo");
+            if (destination != null && direction != null && name != null) {
+                Route r = RouteManager.getInstance().getRouteWithNumber(routeNo, routeName);
+                r.getPattern(name, destination, direction);
+            }
+        }
     }
 }

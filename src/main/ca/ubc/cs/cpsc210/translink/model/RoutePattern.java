@@ -8,7 +8,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-// TODO: Task 2: Complete all the methods in this class
 
 /**
  * A description of one pattern of a route
