@@ -51,11 +51,11 @@ public class BusParser {
 
     private static void parseBus(JSONObject bus) {
         try {
-            routeNumber = bus.getString("RouteNo").trim();
-            destination = bus.getString("Destination").trim();
+            routeNumber = bus.getString("RouteNo");
+            destination = bus.getString("Destination");
             lat = bus.getDouble("Latitude");
             lon = bus.getDouble("Longitude");
-            time = bus.getString("RecordedTime").trim();
+            time = bus.getString("RecordedTime");
         } catch (JSONException e) {
             //nothing
         }

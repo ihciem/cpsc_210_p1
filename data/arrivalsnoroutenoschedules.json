@@ -1,0 +1,154 @@
+[
+  {
+    "Direction": "EAST",
+    "RouteMap": {
+      "Href": "http://nb.translink.ca/geodata/025.kmz"
+    },
+    "RouteName": "BRENTWOOD STN/UBC             ",
+    "Schedules": [
+      {
+        "AddedStop": false,
+        "AddedTrip": false,
+        "CancelledStop": false,
+        "CancelledTrip": false,
+        "Destination": "BRENTWOOD STN",
+        "ExpectedCountdown": 4,
+        "ExpectedLeaveTime": "3:32pm",
+        "LastUpdate": "02:31:04 pm",
+        "Pattern": "EB1B5",
+        "ScheduleStatus": "*"
+      },
+      {
+        "AddedStop": false,
+        "AddedTrip": false,
+        "CancelledStop": false,
+        "CancelledTrip": false,
+        "Destination": "BRENTWOOD STN",
+        "ExpectedCountdown": 14,
+        "ExpectedLeaveTime": "3:42pm",
+        "LastUpdate": "02:41:04 pm",
+        "Pattern": "EB1B5",
+        "ScheduleStatus": "*"
+      },
+      {
+        "AddedStop": false,
+        "AddedTrip": false,
+        "CancelledStop": false,
+        "CancelledTrip": false,
+        "Destination": "BRENTWOOD STN",
+        "ExpectedCountdown": 21,
+        "ExpectedLeaveTime": "3:49pm",
+        "LastUpdate": "02:48:06 pm",
+        "Pattern": "EB1B5",
+        "ScheduleStatus": " "
+      },
+      {
+        "AddedStop": false,
+        "AddedTrip": false,
+        "CancelledStop": false,
+        "CancelledTrip": false,
+        "Destination": "BRENTWOOD STN",
+        "ExpectedCountdown": 30,
+        "ExpectedLeaveTime": "3:58pm",
+        "LastUpdate": "02:57:07 pm",
+        "Pattern": "EB1B5",
+        "ScheduleStatus": "*"
+      },
+      {
+        "AddedStop": false,
+        "AddedTrip": false,
+        "CancelledStop": false,
+        "CancelledTrip": false,
+        "Destination": "BRENTWOOD STN",
+        "ExpectedCountdown": 38,
+        "ExpectedLeaveTime": "4:06pm",
+        "LastUpdate": "03:05:06 pm",
+        "Pattern": "EB1B5",
+        "ScheduleStatus": " "
+      },
+      {
+        "AddedStop": false,
+        "AddedTrip": false,
+        "CancelledStop": false,
+        "CancelledTrip": false,
+        "Destination": "BRENTWOOD STN",
+        "ExpectedCountdown": 46,
+        "ExpectedLeaveTime": "4:14pm",
+        "LastUpdate": "03:13:06 pm",
+        "Pattern": "EB1B5",
+        "ScheduleStatus": " "
+      }
+    ]
+  },
+  {
+    "Direction": "EAST",
+    "RouteMap": {
+      "Href": "http://nb.translink.ca/geodata/033.kmz"
+    },
+    "RouteName": "29 AVE STN/ UBC",
+    "RouteNo": "033",
+    "Schedules": [
+      {
+        "AddedStop": false,
+        "AddedTrip": false,
+        "CancelledStop": false,
+        "CancelledTrip": false,
+        "Destination": "29TH AVE STN",
+        "ExpectedCountdown": -1,
+        "ExpectedLeaveTime": "3:27pm",
+        "LastUpdate": "03:28:35 pm",
+        "Pattern": "EB1",
+      },
+      {
+        "AddedStop": false,
+        "AddedTrip": false,
+        "CancelledStop": false,
+        "CancelledTrip": false,
+        "ExpectedCountdown": 9,
+        "ExpectedLeaveTime": "3:37pm",
+        "LastUpdate": "03:27:47 pm",
+        "Pattern": "EB1",
+        "ScheduleStatus": " "
+      },
+      {
+        "AddedStop": false,
+        "AddedTrip": false,
+        "CancelledStop": false,
+        "CancelledTrip": false,
+        "Destination": "29TH AVE STN",
+        "ExpectedCountdown": 20,
+        "ExpectedLeaveTime": "3:48pm",
+        "LastUpdate": "02:46:09 pm",
+        "Pattern": "EB1",
+      },
+      {
+        "AddedStop": false,
+        "AddedTrip": false,
+        "CancelledStop": false,
+        "CancelledTrip": false,
+        "Destination": "29TH AVE STN",
+        "ExpectedLeaveTime": "4:09pm",
+        "LastUpdate": "03:07:03 pm",
+        "Pattern": "EB1",
+        "ScheduleStatus": " "
+      },
+      {
+        "AddedStop": false,
+        "AddedTrip": false,
+        "CancelledStop": false,
+        "CancelledTrip": false,
+        "ExpectedLeaveTime": "4:20pm",
+        "LastUpdate": "03:18:07 pm",
+        "Pattern": "EB1",
+      }
+    ]
+  },
+  {
+    "Direction": "EAST",
+    "RouteMap": {
+      "Href": "http://nb.translink.ca/geodata/041.kmz"
+    },
+    "RouteName": "JOYCE STN/CROWN/UBC           ",
+    "RouteNo": "041"
+  }
+]

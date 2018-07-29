@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 
 /**
@@ -28,5 +29,32 @@ class StopParserTest {
         assertEquals(8524, StopManager.getInstance().getNumStops());
     }
 
-    // TODO: design more tests
+    @Test
+    void testStopParserMissingInfo() {
+        StopParser p = new StopParser("stopsmissinginfo.json");
+        try {
+            p.parse();
+            fail("StopDataMissingException should have been thrown");
+        } catch (StopDataMissingException e) {
+            //expected
+        } catch (Exception e) {
+            fail("Other exceptions should not have been thrown");
+        }
+        assertEquals(2, StopManager.getInstance().getNumStops());
+    }
+
+    @Test
+    void testStopParserJSONDataError() throws StopDataMissingException, IOException {
+        StopParser p = new StopParser("stopsjsonerror.json");
+        try {
+            p.parse();
+            fail("JSONException should have been thrown");
+        } catch (JSONException e) {
+            //expected
+        } catch (Exception e) {
+            fail("Other exceptions should not have been thrown");
+        }
+        assertEquals(0, StopManager.getInstance().getNumStops());
+    }
+
 }

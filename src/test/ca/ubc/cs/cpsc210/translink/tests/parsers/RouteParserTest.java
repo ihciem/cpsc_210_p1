@@ -30,7 +30,7 @@ class RouteParserTest {
     }
 
     @Test
-    void testRouteParserMissingInfo() throws RouteDataMissingException, JSONException, IOException {
+    void testRouteParserMissingInfo() {
         RouteParser p = new RouteParser("routesmissinginfo.json");
         try {
             p.parse();
@@ -66,6 +66,6 @@ class RouteParserTest {
             //expected
         }
         assertEquals(1, RouteManager.getInstance().getNumRoutes());
-        assertEquals("ROBSON/DOWNTOWN", RouteManager.getInstance().getRouteWithNumber("005").getName());
+        assertEquals("ROBSON/DOWNTOWN                ", RouteManager.getInstance().getRouteWithNumber("005").getName());
     }
 }

@@ -59,9 +59,9 @@ public class RouteParser {
             throws JSONException, RouteDataMissingException {
         JSONArray routes = new JSONArray(jsonResponse);
         boolean thrown = false;
-        for (int index = 0; index < routes.length(); index++) {
+        for (int i = 0; i < routes.length(); i++) {
             try {
-                JSONObject route = routes.getJSONObject(index);
+                JSONObject route = routes.getJSONObject(i);
                 parseRoute(route);
             } catch (RouteDataMissingException e) {
                 thrown = true;
@@ -74,8 +74,8 @@ public class RouteParser {
 
     private void parseRoute(JSONObject route) throws RouteDataMissingException {
         try {
-            String routeName = route.getString("Name").trim();
-            String routeNo = route.getString("RouteNo").trim();
+            String routeName = route.getString("Name");
+            String routeNo = route.getString("RouteNo");
             JSONArray patterns = route.getJSONArray("Patterns");
             parsePatterns(routeNo, routeName, patterns);
         } catch (JSONException e) {
@@ -86,9 +86,9 @@ public class RouteParser {
     private void parsePatterns(String routeNo, String routeName, JSONArray patterns) {
         for (int i = 0; i < patterns.length(); i++) {
             try {
-                String destination = patterns.getJSONObject(i).getString("Destination").trim();
-                String direction = patterns.getJSONObject(i).getString("Direction").trim();
-                String name = patterns.getJSONObject(i).getString("PatternNo").trim();
+                String destination = patterns.getJSONObject(i).getString("Destination");
+                String direction = patterns.getJSONObject(i).getString("Direction");
+                String name = patterns.getJSONObject(i).getString("PatternNo");
                 Route r = RouteManager.getInstance().getRouteWithNumber(routeNo, routeName);
                 r.getPattern(name, destination, direction);
             } catch (JSONException e) {

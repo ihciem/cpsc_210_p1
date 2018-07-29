@@ -1,9 +1,17 @@
 package ca.ubc.cs.cpsc210.translink.parsers;
 
+import ca.ubc.cs.cpsc210.translink.model.Route;
+import ca.ubc.cs.cpsc210.translink.model.RouteManager;
+import ca.ubc.cs.cpsc210.translink.model.Stop;
+import ca.ubc.cs.cpsc210.translink.model.StopManager;
+import ca.ubc.cs.cpsc210.translink.parsers.exception.RouteDataMissingException;
 import ca.ubc.cs.cpsc210.translink.parsers.exception.StopDataMissingException;
 import ca.ubc.cs.cpsc210.translink.providers.DataProvider;
 import ca.ubc.cs.cpsc210.translink.providers.FileDataProvider;
+import ca.ubc.cs.cpsc210.translink.util.LatLon;
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 
@@ -46,6 +54,42 @@ public class StopParser {
      */
     public void parseStops(String jsonResponse)
             throws JSONException, StopDataMissingException {
-        
+        JSONArray stops = new JSONArray(jsonResponse);
+        boolean thrown = false;
+        for (int i = 0; i < stops.length(); i++) {
+            try {
+                JSONObject stop = stops.getJSONObject(i);
+                parseStop(stop);
+            } catch (StopDataMissingException e) {
+                thrown = true;
+            }
+        }
+        if (thrown) {
+            throw new StopDataMissingException();
+        }
     }
+
+    private void parseStop(JSONObject stop) throws StopDataMissingException {
+        try {
+            String name = stop.getString("Name");
+            int number = stop.getInt("StopNo");
+            double lat = stop.getDouble("Latitude");
+            double lon = stop.getDouble("Longitude");
+            LatLon latLon = new LatLon(lat, lon);
+            String routeNames = stop.getString("Routes");
+            StopManager.getInstance().getStopWithNumber(number, name, latLon);
+            addStopToRoute(stop, routeNames);
+        } catch (JSONException e) {
+            throw new StopDataMissingException();
+        }
+    }
+
+    private void addStopToRoute(JSONObject stop, String routeNames) {
+        String[] routes = routeNames.split(",");
+        for (String route : routes) {
+            route.trim();
+            RouteManager.getInstance().getRouteWithNumber(route);
+        }
+    }
+
 }
