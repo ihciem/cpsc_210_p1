@@ -80,22 +80,22 @@ public class StopParser {
             double lat = stop.getDouble("Latitude");
             double lon = stop.getDouble("Longitude");
             LatLon latLon = new LatLon(lat, lon);
-            String routeNames = stop.getString("Routes");
+            String routeNumbers = stop.getString("Routes");
             Stop s = StopManager.getInstance().getStopWithNumber(number, name, latLon);
-            addStopToRoute(s, routeNames);
+            addStopToRoute(s, routeNumbers);
         } catch (JSONException e) {
             throw new StopDataMissingException();
         }
     }
 
     /**
-     * @param stop             stop
-     * @param routeNames       route names separated by commas and spaces
+     * @param stop               stop
+     * @param routeNumbers       route names separated by commas and spaces
      */
-    private void addStopToRoute(Stop stop, String routeNames) {
-        String[] routes = routeNames.split(",");
+    private void addStopToRoute(Stop stop, String routeNumbers) {
+        String[] routes = routeNumbers.split(",");
         for (String route : routes) {
-            route.trim();
+            route = route.trim();
             RouteManager.getInstance().getRouteWithNumber(route).addStop(stop);
         }
     }
