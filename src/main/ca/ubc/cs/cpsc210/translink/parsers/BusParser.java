@@ -48,7 +48,9 @@ public class BusParser {
     }
 
     /**
-     * @param bus
+     * Parse bus from JSON response produced by TransLink query
+     *
+     * @param bus   JSONObject bus
      */
     private static void parseBus(JSONObject bus) {
         try {

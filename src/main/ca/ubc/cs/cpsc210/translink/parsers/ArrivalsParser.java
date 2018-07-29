@@ -48,7 +48,7 @@ public class ArrivalsParser {
     }
 
     /**
-     * @param arrival
+     * @param arrival      JSONObject arrival
      */
     private static void parseArrival(JSONObject arrival) {
         try {
@@ -61,8 +61,10 @@ public class ArrivalsParser {
     }
 
     /**
-     * @param routeNo
-     * @param schedules
+     * Parse schedules from JSON response produced by TransLink query
+     *
+     * @param routeNo    route number
+     * @param schedules  schedule of arrivals
      */
     private static void parseSchedule(String routeNo, JSONArray schedules) {
         Route r = RouteManager.getInstance().getRouteWithNumber(routeNo);
