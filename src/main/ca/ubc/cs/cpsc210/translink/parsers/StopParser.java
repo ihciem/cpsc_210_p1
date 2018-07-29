@@ -70,8 +70,8 @@ public class StopParser {
     }
 
     /**
-     * @param stop
-     * @throws StopDataMissingException
+     * @param stop                           JSONObject stop
+     * @throws StopDataMissingException      StopDataMissingException
      */
     private void parseStop(JSONObject stop) throws StopDataMissingException {
         try {
@@ -89,8 +89,8 @@ public class StopParser {
     }
 
     /**
-     * @param stop
-     * @param routeNames
+     * @param stop             stop
+     * @param routeNames       route names separated by commas and spaces
      */
     private void addStopToRoute(Stop stop, String routeNames) {
         String[] routes = routeNames.split(",");

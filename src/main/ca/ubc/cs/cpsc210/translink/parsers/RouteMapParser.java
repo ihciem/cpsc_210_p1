@@ -69,7 +69,7 @@ public class RouteMapParser {
     /**
      * Parsing one LatLon pair
      *
-     * @param array
+     * @param array           an array of lat lon coordinates
      */
     private void parseLatLon(String array) {
         double lat = 0.0;

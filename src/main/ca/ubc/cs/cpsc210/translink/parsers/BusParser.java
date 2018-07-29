@@ -1,6 +1,9 @@
 package ca.ubc.cs.cpsc210.translink.parsers;
 
-import ca.ubc.cs.cpsc210.translink.model.*;
+import ca.ubc.cs.cpsc210.translink.model.Bus;
+import ca.ubc.cs.cpsc210.translink.model.Route;
+import ca.ubc.cs.cpsc210.translink.model.RouteManager;
+import ca.ubc.cs.cpsc210.translink.model.Stop;
 import ca.ubc.cs.cpsc210.translink.model.exception.RouteException;
 import org.json.JSONArray;
 import org.json.JSONException;

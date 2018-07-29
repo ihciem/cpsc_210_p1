@@ -73,8 +73,8 @@ public class RouteParser {
     }
 
     /**
-     * @param route
-     * @throws RouteDataMissingException
+     * @param route                           JSONObject route
+     * @throws RouteDataMissingException      RouteDataMissingException
      */
     private void parseRoute(JSONObject route) throws RouteDataMissingException {
         try {
@@ -88,9 +88,9 @@ public class RouteParser {
     }
 
     /**
-     * @param routeNo
-     * @param routeName
-     * @param patterns
+     * @param routeNo                       route number
+     * @param routeName                     route name
+     * @param patterns                      patterns
      */
     private void parsePatterns(String routeNo, String routeName, JSONArray patterns) {
         for (int i = 0; i < patterns.length(); i++) {
