@@ -78,17 +78,18 @@ public class StopParser {
             LatLon latLon = new LatLon(lat, lon);
             String routeNames = stop.getString("Routes");
             StopManager.getInstance().getStopWithNumber(number, name, latLon);
-            addStopToRoute(stop, routeNames);
+            addStopToRoute(number, routeNames);
         } catch (JSONException e) {
             throw new StopDataMissingException();
         }
     }
 
-    private void addStopToRoute(JSONObject stop, String routeNames) {
+    private void addStopToRoute(int number, String routeNames) {
         String[] routes = routeNames.split(",");
         for (String route : routes) {
             route.trim();
-            RouteManager.getInstance().getRouteWithNumber(route);
+            Route r = RouteManager.getInstance().getRouteWithNumber(route);
+            StopManager.getInstance().getStopWithNumber(number).addRoute(r);
         }
     }
 
